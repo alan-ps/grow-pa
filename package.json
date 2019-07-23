@@ -1,0 +1,14 @@
+{
+  "name": "sticky-planner",
+  "version": "1.0.0",
+  "description": "Sticky Planner: simple project manager system.",
+  "author": "Serhii Puchkovskyi",
+  "license": "ISC",
+  "scripts": {
+    "start": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
+  }
+}
