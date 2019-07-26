@@ -1,2 +1,2 @@
-# Sticky Planner
-Simple project manager system.
+# Grow PA
+Your personal grow assistant.

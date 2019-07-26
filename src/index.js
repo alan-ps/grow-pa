@@ -1,1 +1,6 @@
-console.log('Hello World!');
+'use strict';
+
+let test = 100;
+let welcome = require('./welcome');
+
+welcome('home');

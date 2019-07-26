@@ -1,7 +1,7 @@
 {
-  "name": "sticky-planner",
+  "name": "gro-pa",
   "version": "1.0.0",
-  "description": "Sticky Planner: simple project manager system.",
+  "description": "Grow PA: Your personal grow assistant.",
   "author": "Serhii Puchkovskyi",
   "license": "ISC",
   "scripts": {
