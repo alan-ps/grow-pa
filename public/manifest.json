@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Grow PA",
+  "name": "Your personal grow assistant.",
   "icons": [
     {
       "src": "favicon.ico",
