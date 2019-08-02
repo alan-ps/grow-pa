@@ -1,7 +1,9 @@
 {
   "name": "grow-pa",
+  "description": "Grow PA: Your personal grow assistant.",
+  "author": "Serhii Puchkovskyi",
+  "license": "ISC",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
