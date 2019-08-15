@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { Redirect, BrowserRouter, Route, Switch } from "react-router-dom";
+import { Redirect, BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import PGASignIn from './components/PGASignIn';
 
 import Front from './components/Front';
 
@@ -7,7 +9,7 @@ import Front from './components/Front';
  * An entry application component.
  */
 function App() {
-  let auth = false;
+  const auth = window.localStorage && window.localStorage.auth;
 
   return (
     <BrowserRouter>
@@ -26,7 +28,7 @@ function App() {
 
         <Route
           path="/sign-in"
-          render={() => (auth ? (<Redirect to="/dashboard" />) : (<SignIn />))}
+          render={() => (auth ? (<Redirect to="/dashboard" />) : (<PGASignIn />))}
         />
 
         <Route
