@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Redirect, BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import PGASignIn from './components/PGASignIn';
+import PGARouterAuthIn from './components/router/PGARouterAuthIn';
+import PGARouterAuthOut from './components/router/PGARouterAuthOut';
 
 import Front from './components/Front';
 import "./scss/styles.scss";
@@ -10,40 +12,17 @@ import "./scss/styles.scss";
  * An entry application component.
  */
 function App() {
-  const auth = window.localStorage && window.localStorage.auth;
-
   return (
     <div id="page-wrapper">
       <Header />
       <div className="main-wrapper">
         <BrowserRouter>
           <Switch>
-
-            <Route
-              exact
-              path="/"
-              render={() => (auth ? (<Redirect to="/dashboard" />) : (<Front />))}
-            />
-
-            <Route
-              path="/dashboard"
-              render={() => (!auth ? (<Redirect to="/sign-in" />) : (<Dashboard />))}
-            />
-
-            <Route
-              path="/sign-in"
-              render={() => (auth ? (<Redirect to="/dashboard" />) : (<PGASignIn />))}
-            />
-
-            <Route
-              path="/sign-up"
-              render={() => (auth ? (<Redirect to="/dashboard" />) : (<SignUp />))}
-            />
-
-            <Route
-              component={NoMatch}
-            />
-
+            <PGARouterAuthIn exact path="/" component={Front} />
+            <PGARouterAuthOut path="/dashboard" component={Dashboard} />
+            <PGARouterAuthIn path="/sign-in" component={PGASignIn} />
+            <PGARouterAuthIn path="/sign-up" component={SignUp} />
+            <Route component={NoMatch} />
           </Switch>
         </BrowserRouter>
       </div>
