@@ -1,0 +1,16 @@
+.btn.btn-facebook,
+.btn.btn-google {
+  border-radius: 10px;
+  display: block;
+  border: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.btn.btn-facebook {
+  background-color: $color-btn-fb;
+}
+
+.btn.btn-google {
+  background-color: $color-btn-google;
+}
