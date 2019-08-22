@@ -1,0 +1,23 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  background: $color-bg;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header {
+  height: 50px;
+  background-color: $color-main;
+  margin-bottom: 15px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 0;
+}
+
+.main-wrapper {
+  max-width: 860px;
+  margin: auto;
+}

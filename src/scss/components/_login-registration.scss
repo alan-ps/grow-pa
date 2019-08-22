@@ -1,0 +1,40 @@
+.sign-in {
+  border: 1px solid $color-border;
+  padding: 15px;
+  background-color: $color-block-bg;
+  p {
+    text-align: center;
+  }
+}
+
+.sign-in-social__btn {
+  @extend .btn;
+  @extend .btn-primary;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  &.sign-in-social__btn_color_blue {
+    margin-bottom: 10px;
+    background-color: $color-btn-fb;
+  }
+
+  &.sign-in-social__btn_color_red {
+    margin-bottom: 10px;
+    background-color: $color-btn-google;
+  }
+}
+
+.login__btn {
+  @extend .btn;
+  width: 49%;
+  &.login__btn_green {
+    @extend .btn-success;
+    float: left;
+  }
+
+  &.login__btn_white {
+    @extend .btn-light;
+    border: 1px solid $color-border;
+    float: right;
+  }
+}

@@ -5,9 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 /**
- * Implements the Sign In form component.
+ * Implements the Sign Ip form component.
  */
-class PGASignIn extends React.Component {
+class PGASignUp extends React.Component {
 
   constructor(props) {
     super(props);
@@ -15,20 +15,11 @@ class PGASignIn extends React.Component {
     this.state = {
       email: '',
       password: '',
-      formValid: false,
-      formSubmit: false
+      password2: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  validate(email, password) {
-    if (email === 'test@test.io' && password === 'qazwsx') {
-      return true;
-    }
-
-    return false;
   }
 
   handleChange(event) {
@@ -38,26 +29,12 @@ class PGASignIn extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { email, password } = this.state;
-
-    if (!this.validate(email, password)) {
-      this.setState({formSubmit: true});
-      this.setState({formValid: false});
-      return;
-    }
-
-    // Submit the data.
-    localStorage.setItem('auth', true);
-    window.location.href = '/dashboard';
   }
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit} id="form-grow-pa-login">
-        {
-          (this.state.formSubmit && !this.state.formValid) &&
-          <div className="alert alert-danger" role="alert">Entered data are not correct!</div>
-        }
+      <Form onSubmit={this.handleSubmit} className="registration-form">
+
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -78,11 +55,22 @@ class PGASignIn extends React.Component {
           />
         </Form.Group>
 
+        <Form.Group controlId="formBasicPassword2">
+          <Form.Label>Repeat your password</Form.Label>
+          <Form.Control
+            name="password2"
+            type="password"
+            value={this.state.password2}
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+
         <Link to="/">Back</Link>
-        <Button variant="primary" type="submit">Submit</Button>
+        <Button variant="primary" type="submit">Register</Button>
       </Form>
     );
   }
+
 }
 
-export default PGASignIn;
+export default PGASignUp;

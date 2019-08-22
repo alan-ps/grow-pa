@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import { Redirect, BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import Button from 'react-bootstrap/Button';
 
 import PGASignIn from './components/PGASignIn';
+import PGASignUp from './components/PGASignUp';
 import PGARouterAuthIn from './components/router/PGARouterAuthIn';
 import PGARouterAuthOut from './components/router/PGARouterAuthOut';
 
@@ -21,7 +24,7 @@ function App() {
             <PGARouterAuthIn exact path="/" component={Front} />
             <PGARouterAuthOut path="/dashboard" component={Dashboard} />
             <PGARouterAuthIn path="/sign-in" component={PGASignIn} />
-            <PGARouterAuthIn path="/sign-up" component={SignUp} />
+            <PGARouterAuthIn path="/sign-up" component={PGASignUp} />
             <Route component={NoMatch} />
           </Switch>
         </BrowserRouter>
@@ -34,20 +37,18 @@ function Dashboard() {
   return <h1>Dashboard</h1>;
 }
 
-function SignIn() {
-  return <h1>SignIn</h1>;
-}
-
-function SignUp() {
-  return <h1>SignUn</h1>;
-}
-
 function NoMatch() {
   return <h1>404</h1>;
 }
 
 function Header() {
-  return <header></header>;
+  return (
+    <header className="header">
+      <div className="region region-secondary-menu">
+        <Button variant="light" type="submit">Sign out</Button>
+      </div>
+    </header>
+  );
 }
 
 export default App;

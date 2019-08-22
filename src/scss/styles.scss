@@ -1,4 +1,6 @@
-@import "base/colors";
-@import "base/init";
+@import "~bootstrap/scss/bootstrap";
 
-@import "modules/_button.scss";
+@import "variables/colors";
+@import "base/global";
+
+@import "components/_login-registration";
