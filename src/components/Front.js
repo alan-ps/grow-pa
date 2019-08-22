@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -8,7 +7,7 @@ import Col from 'react-bootstrap/Col'
 /**
  * The "Front" component that describes the base app idea and requests to join.
  */
-class Front extends Component {
+class Front extends React.Component {
   render() {
     return (
       <div className="container">
@@ -31,7 +30,7 @@ class Front extends Component {
               <div className="login">
                 <Link to="/sign-in" className="login__btn login__btn_green" role="button">Sign in</Link>
                 <Link to="/sign-up" className="login__btn login__btn_white" role="button">Sign up</Link>
-                <div class="clearfix"></div>
+                <div className="clearfix"></div>
               </div>
             </div>
           </Col>

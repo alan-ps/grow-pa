@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Button from 'react-bootstrap/Button';
-
+import PGAHeader from './components/PGAHeader';
 import PGASignIn from './components/PGASignIn';
 import PGASignUp from './components/PGASignUp';
 import PGARouterAuthIn from './components/router/PGARouterAuthIn';
@@ -15,16 +14,19 @@ import "./scss/styles.scss";
  * An entry application component.
  */
 function App() {
+  // @TODO
+  const auth = window.localStorage && window.localStorage.auth;
+
   return (
     <div id="page-wrapper">
-      <Header />
+      <PGAHeader auth={auth} />
       <div className="main-wrapper">
         <BrowserRouter>
           <Switch>
-            <PGARouterAuthIn exact path="/" component={Front} />
-            <PGARouterAuthOut path="/dashboard" component={Dashboard} />
-            <PGARouterAuthIn path="/sign-in" component={PGASignIn} />
-            <PGARouterAuthIn path="/sign-up" component={PGASignUp} />
+            <PGARouterAuthIn exact path="/" auth={auth} component={Front} />
+            <PGARouterAuthOut path="/dashboard" auth={auth} component={Dashboard} />
+            <PGARouterAuthIn path="/sign-in" auth={auth} component={PGASignIn} />
+            <PGARouterAuthIn path="/sign-up" auth={auth} component={PGASignUp} />
             <Route component={NoMatch} />
           </Switch>
         </BrowserRouter>
@@ -39,16 +41,6 @@ function Dashboard() {
 
 function NoMatch() {
   return <h1>404</h1>;
-}
-
-function Header() {
-  return (
-    <header className="header">
-      <div className="region region-secondary-menu">
-        <Button variant="light" type="submit">Sign out</Button>
-      </div>
-    </header>
-  );
 }
 
 export default App;
