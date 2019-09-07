@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CategoryList from './Categories/CategoryList';
-import CategoryControlPanel from './Categories/CategoryControlPanel'
+import CategoryList from './Category/CategoryList';
+import CategoryControlPanel from './Category/CategoryControlPanel'
 
 /**
  * Represents a dashboard component.
