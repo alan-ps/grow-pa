@@ -23,7 +23,6 @@ class CategoryNew extends React.Component {
     });
   }
 
-
   render() {
     return (
       <Link to='#' className="category-list__item col-md-3" onClick = { e => this.handleClick(e) }>
