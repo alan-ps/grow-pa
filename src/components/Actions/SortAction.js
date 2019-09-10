@@ -16,15 +16,12 @@ class SortAction extends React.Component {
   }
 
   componentDidMount() {
-    // @TODO
     this.sort = 'desc';
   }
 
   handleSort(event, sortType) {
     event.preventDefault();
-
-    // @TODO
-    fetchData(this.props, '', sortType);
+    fetchData(this.props, this.props.category_search, sortType);
   }
 
   render() {
@@ -41,5 +38,5 @@ class SortAction extends React.Component {
 
 }
 
-const mapStateToProps = state => ({ ...state.actionReducer });
+const mapStateToProps = state => ({ ...state.restReducer });
 export default connect(mapStateToProps)(SortAction);
