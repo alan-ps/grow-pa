@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 
 import Throbber from 'components/Basic/Throbber';
 import Category from './Category';
+import CategoryNew from './CategoryNew';
 import { fetchData } from 'utils/rest';
 
 /**
@@ -28,9 +29,10 @@ class CategoryList extends React.Component {
         <Row className={ `category-list category-list-${ this.props.actionReducer.display }` }>
           {
             this.props.restReducer.categories.map(item => (
-              <Category item = { item } />
+              <Category item = { item } col= { this.props.actionReducer.display === 'bars' }/>
             ))
           }
+          <CategoryNew />
         </Row>
       ));
     }
