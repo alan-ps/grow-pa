@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 // Import custom application components.
-import Front from './components/Front';
+import Front from './components/Block/Front';
 import Dashboard from './components/Dashboard';
 import PGAHeader from './components/PGAHeader';
 import PGASignIn from './components/PGASignIn';
