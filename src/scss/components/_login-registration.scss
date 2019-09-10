@@ -1,4 +1,4 @@
-.sign-in {
+.login {
   border: 1px solid $color-border;
   padding: 15px;
   background-color: $color-block-bg;
@@ -7,32 +7,33 @@
   }
 }
 
-.sign-in-social__btn {
+.login__social-btn {
   @extend .btn;
   @extend .btn-primary;
   border-radius: 10px;
   border: none;
   width: 100%;
-  &.sign-in-social__btn_color_blue {
+  &.login__social-btn--color-blue {
     margin-bottom: 10px;
     background-color: $color-btn-fb;
   }
 
-  &.sign-in-social__btn_color_red {
+  &.login__social-btn--color-red {
     margin-bottom: 10px;
     background-color: $color-btn-google;
   }
 }
 
-.login__btn {
+.login__native-btn {
   @extend .btn;
   width: 49%;
-  &.login__btn_green {
+  &.login__native-btn--color-green {
     @extend .btn-success;
     float: left;
+    background-color: $color-main;
   }
 
-  &.login__btn_white {
+  &.login__native-btn--color-white {
     @extend .btn-light;
     border: 1px solid $color-border;
     float: right;
