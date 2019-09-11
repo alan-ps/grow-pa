@@ -33,3 +33,34 @@ class RootModal extends React.Component {
 
 const mapStateToProps = state => ({ ...state.modalReducer });
 export default connect(mapStateToProps)(RootModal);
+
+
+// DirectionNewModal.js
+
+// export default connectModal('DIRECTION_NEW') (
+//   connect(mapStateToProps)(DirectionNewModal)
+// );
+
+// RootModal.js
+
+
+// return (
+//   React.createElement(this.props.component, {
+//     show: this.props.showModal && this.props.name === this.props.modalType,
+//     onHide: (e) => this.closeModal(e),
+//     ...this.props.otherProps
+//   })
+// );
+//
+//
+// const mapStateToProps = state => ({ ...state.modalReducer });
+// const ConnectedRootModal = connect(mapStateToProps)(RootModal);
+//
+// export function connectModal(name) {
+//   return function (component) {
+//     return (props) => (
+//       <ConnectedRootModal name={name} component={component} otherProps={props}/>
+//     )
+//   }
+// }
+

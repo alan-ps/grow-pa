@@ -1,6 +1,7 @@
 import React from 'react';
+import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 // Import custom application components.
@@ -18,10 +19,19 @@ import PGARouterAuthOut from './components/router/PGARouterAuthOut';
 // Import application reducer.
 import rootReducer from './reducers/rootReducer';
 
+import rootSaga from './sagas';
+
+
 // Import the styles.
 import "./scss/styles.scss";
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  rootReducer,
+  applyMiddleware(sagaMiddleware)
+);
+sagaMiddleware.run(rootSaga);
+// const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 /**
  * An entry application component.

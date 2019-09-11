@@ -5,9 +5,6 @@ import { PGAFilter, PGASort } from './helpers';
  */
 export function fetchData(props, phrase = '', sortBy='desc') {
   setTimeout(() => {
-console.log(props)
-
-    // phrase = props.category_search;
 
     // @TODO
     let directions = localStorage.getItem('directions');

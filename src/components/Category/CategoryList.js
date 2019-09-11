@@ -14,7 +14,11 @@ import { fetchData } from 'utils/rest';
 class CategoryList extends React.Component {
 
   componentDidMount() {
-    fetchData(this.props);
+    this.props.dispatch({
+      type: 'FETCH_CATEGORIES',
+      payload: { ...this.props.restReducer }
+    });
+    // fetchData(this.props);
   }
 
   render() {

@@ -1,8 +1,10 @@
-
-
-
-
-
+/**
+ *
+ * @param str
+ * @param count
+ *
+ * @returns {string}
+ */
 export function getCode(str, count = 2) {
   let code = '';
   let res = str.split(" ");
@@ -15,7 +17,13 @@ export function getCode(str, count = 2) {
   return code;
 }
 
-
+/**
+ *
+ * @param sortBy
+ * @returns {Function}
+ *
+ * @constructor
+ */
 export function PGASort(sortBy) {
   return function (a, b) {
 
@@ -29,11 +37,16 @@ export function PGASort(sortBy) {
   }
 }
 
-export function PGAFilter(filterPhrase/*, filterType*/) {
+/**
+ *
+ * @param filterPhrase
+ * @returns {Function}
+ *
+ * @constructor
+ */
+export function PGAFilter(filterPhrase) {
   return function (data) {
-    //debugger;
     const type = 'title';
-    // const type = (filterType == 'genre') ? 'genre' : 'name';
     return data[type].toLowerCase().startsWith(filterPhrase.toLowerCase());
     return filterPhrase.toLowerCase() === data[type].toLowerCase();
   }

@@ -38,5 +38,15 @@
     .category-list__item-title {
       display: inline-block;
     }
+
+    .category-list__item-show {
+      width: 75px;
+      .code {
+        height: 100%;
+        padding: 25px;
+        background-color: $color-main;
+        color: #fff;
+      }
+    }
   }
 }
