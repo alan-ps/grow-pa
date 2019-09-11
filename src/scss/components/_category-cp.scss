@@ -3,4 +3,12 @@
   font-size: 28px;
   text-decoration: none;
   color: $color-border;
+  &:hover {
+    text-decoration: none;
+    color: $color-main;
+  }
+}
+
+.category-cp__action-item--active {
+  color: $color-main;
 }

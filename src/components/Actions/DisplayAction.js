@@ -26,7 +26,11 @@ class DisplayAction extends React.Component {
     return Object.keys(displayTypes).map(
       item => <Link
         to = '#'
-        className = { `category-cp__action-item fa ${ displayTypes[item] }` }
+        className = {
+          `category-cp__action-item
+          ${ item == this.props.display ? 'category-cp__action-item--active' : 'category-cp__action-item--disabled' }
+          fa ${ displayTypes[item] }`
+        }
         onClick = { event => this.handleDisplay(event, item) }
       />
     );
