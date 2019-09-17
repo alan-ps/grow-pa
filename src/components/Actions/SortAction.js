@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchData } from 'utils/rest';
 
 /**
  * Represents a sort action component.
@@ -21,7 +20,14 @@ class SortAction extends React.Component {
 
   handleSort(event, sortType) {
     event.preventDefault();
-    fetchData(this.props, this.props.category_search, sortType);
+
+    let payload = { ...this.props };
+    payload.category_sort = sortType;
+
+    this.props.dispatch({
+      type: 'FETCH_CATEGORIES',
+      payload: payload
+    });
   }
 
   render() {

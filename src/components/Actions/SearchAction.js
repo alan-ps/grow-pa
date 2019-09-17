@@ -1,9 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap';
-
-import { fetchData } from 'utils/rest';
 
 const WAIT_INTERVAL = 300;
 
@@ -30,7 +27,13 @@ class SearchAction extends React.Component {
   }
 
   triggerChange(value) {
-    fetchData(this.props, value, this.props.category_sort);
+    let payload = { ...this.props.restReducer };
+    payload.category_search = value;
+
+    this.props.dispatch({
+      type: 'FETCH_CATEGORIES',
+      payload: payload
+    });
   }
 
   render() {
@@ -48,5 +51,5 @@ class SearchAction extends React.Component {
 
 }
 
-const mapStateToProps = state => ({ ...state.restReducer });
+const mapStateToProps = state => ({ ...state });
 export default connect(mapStateToProps)(SearchAction);

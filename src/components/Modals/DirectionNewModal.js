@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-
-import { putData } from 'utils/rest';
-import {conectModal} from "./RootModal";
+// import {conectModal} from "./RootModal";
 
 /**
  * Implements a modal to add new direction.
@@ -48,7 +46,10 @@ class DirectionNewModal extends Component {
       modalType: 'DIRECTION_NEW'
     });
 
-    putData(this.props, this.state.title);
+    this.props.dispatch({
+      type: 'CREATE_CATEGORY',
+      payload: { title: this.state.title }
+    });
   }
 
   render() {

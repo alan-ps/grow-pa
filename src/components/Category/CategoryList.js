@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Throbber from 'components/Basic/Throbber';
 import Category from './Category';
 import CategoryNew from './CategoryNew';
-import { fetchData } from 'utils/rest';
 
 /**
  * Represents a component to render a list of categories.
@@ -18,7 +17,6 @@ class CategoryList extends React.Component {
       type: 'FETCH_CATEGORIES',
       payload: { ...this.props.restReducer }
     });
-    // fetchData(this.props);
   }
 
   render() {
