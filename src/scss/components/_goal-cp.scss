@@ -1,0 +1,34 @@
+.goal-cp__form {
+  padding: 10px 0;
+  .btn {
+    @extend .btn-success;
+    width: 100%;
+    background-color: $color-main;
+    border: none;
+  }
+}
+
+.goal-cp__nav {
+  @extend .nav, .nav-tabs;
+}
+
+.goal-cp__nav-item {
+  @extend .nav-item;
+  width: 50%;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.goal-cp__nav-link {
+  @extend .nav-link;
+  color: $color-border;
+  &:hover {
+    color: $color-border;
+  }
+
+  &.goal-cp__nav-link--active {
+    background-color: $color-block-bg;
+    border-color: $color-border $color-border $color-block-bg; 
+    color: $color-main;
+  }
+}

@@ -60,23 +60,20 @@ class GoalControlPanel extends React.Component {
 
     return (
       <div className="goal-cp">
-        <div>
-          <ul className="nav nav-tabs">
-            {
-              Object.keys(actionItemTypes).map(
-                item => <li key={ item } className="nav-item">
-                  <Link
-                    to="#"
-                    className={ `nav-link  ${ (this.props.actionItemType == item) && 'active'}` }
-                    onClick = { event => this.handleSwitch(event, item) }
-                  > { actionItemTypes[item] } </Link>
-                </li>
-              )
-            }
-          </ul>
-        </div>
-        <div>
-        <Form onSubmit={event => this.handleSubmit(event, this.props.actionItemType)} >
+        <ul className="goal-cp__nav">
+          {
+            Object.keys(actionItemTypes).map(
+              item => <li key={ item } className="goal-cp__nav-item">
+                <Link
+                  to="#"
+                  className={ `goal-cp__nav-link  ${ (this.props.actionItemType == item) && 'goal-cp__nav-link--active'}` }
+                  onClick = { event => this.handleSwitch(event, item) }
+                > { actionItemTypes[item] } </Link>
+              </li>
+            )
+           }
+        </ul>
+        <Form className="goal-cp__form" onSubmit={event => this.handleSubmit(event, this.props.actionItemType)} >
           <Form.Row>
             <Form.Group as={Col} xs='10'>
               <Form.Control
@@ -92,7 +89,6 @@ class GoalControlPanel extends React.Component {
             </Form.Group>
           </Form.Row>
           </Form>
-        </div>
       </div>
     );
   }
