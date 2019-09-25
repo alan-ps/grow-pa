@@ -9,7 +9,9 @@ const GroupItem = (props) => (
     <summary>{props.name}</summary>
     {
       props.goals.map(goal => (
-        goal.settings.group == props.id ? <GoalItem key={ goal.id } name={ goal.value } /> : false
+        goal.settings.group == props.id ? (
+          <GoalItem key={ goal.id } name={ goal.value } />
+        ) : false
       ))
     }
   </details>
