@@ -1,45 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GoalItem from 'components/Goal/GoalItem';
 
 /**
- * Represents a single group item.
+ * Represents a single group item component.
  */
-class GroupItem extends React.Component {
+export default function GroupItem(props) {
+  const [groupState, setGeoupState] = useState(false);
+  const groupStateSelector = groupState ? 'active' : 'hidden';
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      visibility: false
-    }
-
-    this.handleClick = this.handleClick.bind(this);
+  function handleGroupState(event) {
+    setGeoupState(!groupState);
   }
 
-  handleClick(event) {
-    this.setState({visibility: !this.state.visibility})
-  }
-
-  render() {
-    const groupVisibility = this.state.visibility ? 'hidden' : 'active';
-
-    return (
-      <React.Fragment>
-        <div className="goal-list__group" onClick={this.handleClick}>
-          {this.props.name}
-        </div>
-        <div className={`goal-list__items goal-list__items--${groupVisibility}`} >
-          {
-            this.props.goals.map(goal => (
-              goal.settings.group == this.props.id ? (
-                <GoalItem key={ goal.id } name={ goal.value } />
-              ) : false
-            ))
-          } 
-        </div>
-      </React.Fragment>
-    )
-  }
+  return (
+    <React.Fragment>
+      <div className="goal-list__group" onClick={ handleGroupState }>
+        { props.name }
+      </div>
+      <div className={`goal-list__items goal-list__items--${ groupStateSelector }`} >
+        {
+          props.goals.map(goal => (
+            (goal.settings.group == props.id) ? (
+              <GoalItem key={ goal.id } name={ goal.value } />
+            ) : false
+          ))
+        } 
+      </div>
+    </React.Fragment>
+  );
 }
-
-export default GroupItem;
