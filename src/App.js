@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 
 // Import custom application components.
 import Front from './components/Block/Front';
-import Dashboard from './components/Dashboard';
 import PGAHeader from './components/PGAHeader';
 import PGASignIn from './components/PGASignIn';
 import PGASignUp from './components/PGASignUp';
@@ -16,11 +15,15 @@ import RootModal from './components/Modals/RootModal';
 import PGARouterAuthIn from './components/router/PGARouterAuthIn';
 import PGARouterAuthOut from './components/router/PGARouterAuthOut';
 
+// Import the page components.
+import Dashboard from './components/Pages/Dashboard';
+import CategoryItem from './components/Pages/CategoryItem';
+import NoMatch from './components/Pages/NoMatch';
+
 // Import application reducer.
 import rootReducer from './reducers/rootReducer';
 
 import rootSaga from './sagas';
-
 
 // Import the styles.
 import "./scss/styles.scss";
@@ -51,6 +54,9 @@ function App() {
               <PGARouterAuthOut path="/dashboard" auth={auth} component={Dashboard} />
               <PGARouterAuthIn path="/sign-in" auth={auth} component={PGASignIn} />
               <PGARouterAuthIn path="/sign-up" auth={auth} component={PGASignUp} />
+
+              <Route path="/categories/:id" component={CategoryItem} />
+
               <Route component={NoMatch} />
             </Switch>
           </BrowserRouter>
@@ -61,10 +67,6 @@ function App() {
 
     </Provider>
   );
-}
-
-function NoMatch() {
-  return <h1>404</h1>;
 }
 
 export default App;

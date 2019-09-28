@@ -1,34 +1,33 @@
 import React from 'react';
-
 import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 /**
  * Implements the app header component.
  */
-class PGAHeader extends React.Component {
+function PGAHeader(props) {
+  const back = props.back ? <a href={props.back} className="fa fa-arrow-left" aria-hidden="true"></a> : '';
+  const button = (props.auth) ? <Button variant="light" type="submit" onClick={handleSubmit}>Sign out</Button> : '';
 
-  constructor(props) {
-    super(props);
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-
     localStorage.removeItem('auth');
     window.location.href = '/';
   }
 
-  render() {
-    const button = (this.props.auth) ? <Button variant="light" type="submit" onClick={this.handleSubmit}>Sign out</Button> : '';
-
-    return (
-      <header className="header">
-        <div className="region region-secondary-menu">{button}</div>
-      </header>
-    )
-  }
+  return (
+    <header className="header">
+      <div className="container">
+        <div class="row">
+        <div className="region region-back col-2">{back}</div>
+        <div className="region region-title col-8">{props.title}</div>
+        <div className="region region-sign-out col-2">{button}</div>
+        </div>
+      </div>
+    </header>
+  )
 }
 
-export default PGAHeader;
+const mapStateToProps = state => ({ ...state.navigation });
+export default connect(mapStateToProps)(PGAHeader);

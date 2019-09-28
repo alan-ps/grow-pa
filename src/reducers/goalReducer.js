@@ -4,7 +4,8 @@ const initialState = {
   actionItemType: 'goal',
   value: '',
   group: '',
-  goals: 0
+  goals: 0,
+  closedGroups: []
 };
 
 // Handler for a specific case ("case reducer").
