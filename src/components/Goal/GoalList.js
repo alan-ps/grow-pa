@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import Throbber from 'components/Basic/Throbber';
 import GroupItem from 'components/Goal/GroupItem';
 
+import { DndProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
+
 /**
  * Represents a component to render a list of goal/groups.
  */
@@ -33,18 +36,20 @@ class GoalList extends React.Component {
       this.groups.push({ id: 0, value: 'Default group' });
 
       return (
-        <div className="goal-list">
-          {
-            this.groups.map(group => (
-              <GroupItem
-                key={ group.id }
-                id={ group.id }
-                name={ group.value }
-                goals={ this.goals }
-              />
-            ))
-          }
-        </div>
+        <DndProvider backend={HTML5Backend}>
+          <div className="goal-list">
+            {
+              this.groups.map(group => (
+                <GroupItem
+                  key={ group.id }
+                  id={ group.id }
+                  name={ group.value }
+                  goals={ this.goals }
+                />
+              ))
+            }
+          </div>
+        </DndProvider>
       );
     }
   }
