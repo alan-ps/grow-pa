@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Throbber from 'components/Basic/Throbber';
@@ -10,48 +10,54 @@ import HTML5Backend from 'react-dnd-html5-backend'
 /**
  * Represents a component to render a list of goal/groups.
  */
-class GoalList extends React.Component {
+function GoalList(props) {
 
-  componentDidMount() {
-    this.props.dispatch({
+  useEffect(() => {
+    props.dispatch({
       type: 'ACTION_ITEM_FETCH_ASYNC',
-      categoryId: this.props.categoryId
+      categoryId: props.categoryId
     });
+  }, []);
+
+  let actionItems = props.goals;
+
+  if (!actionItems) {
+    // Add a throbber loader before we wait for a response.
+    return ( <Throbber /> );
   }
+  else {
+    // Retriave the group action items.
+    const groups = actionItems.filter(item => (item.actionItemType === 'group' || false));
+    groups.push({ id: 0, value: 'Default group' });
 
-  render() {
-    // @TODO: replace the goals name
-    let actionItems = this.props.goals;
+    // Assign the goals to the associated goals.
+    for (let index = 0; index < groups.length; index++) {
+      let group = groups[index];
 
-    if (!actionItems) {
-      // Add a throbber loader before we wait for a response.
-      return ( <Throbber /> );
+      group['items'] = actionItems.filter(
+        item => (
+          (item.actionItemType === 'goal' && group.id === item.settings.group) || false
+        )
+      )
     }
-    else {
-      // @TODO: actionItemType ?
-      this.groups = actionItems.filter(item => (item.actionItemType === 'group' || false));
-      this.goals = actionItems.filter(item => (item.actionItemType === 'goal' || false));
 
-      // The default group.
-      this.groups.push({ id: 0, value: 'Default group' });
-
-      return (
-        <DndProvider backend={HTML5Backend}>
-          <div className="goal-list">
-            {
-              this.groups.map(group => (
-                <GroupItem
-                  key={ group.id }
-                  id={ group.id }
-                  name={ group.value }
-                  goals={ this.goals }
-                />
-              ))
-            }
-          </div>
-        </DndProvider>
-      );
-    }
+    return (
+      <DndProvider backend={HTML5Backend}>
+        <div className="goal-list" >
+          {
+            groups.map(group => (
+              <GroupItem
+                key={ group.id }
+                id={ group.id }
+                name={ group.value }
+                goals={ group.items }
+                categoryId={props.categoryId}
+              />
+            ))
+          }
+        </div>
+      </DndProvider>
+    );
   }
 }
 
