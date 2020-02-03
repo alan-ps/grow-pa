@@ -12,6 +12,24 @@ header {
   height: 50px;
   background-color: $color-main;
   margin-bottom: 15px;
+  .container {
+    padding-top: 5px;
+    max-width: 860px;
+    .region-back a,
+    .region-title {
+      font-size: 25px;
+      color: white;
+      font-weight: 900;
+      &:hover {
+        text-decoration: none;
+        cursor: default;
+      }
+    }
+
+    .region-title {
+      text-align: center;
+    }
+  }
 }
 
 h1, .h1, h2, .h2, h3, .h3 {

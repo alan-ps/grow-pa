@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Import custom application components.
 import Front from './components/Block/Front';
@@ -31,7 +32,7 @@ import "./scss/styles.scss";
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
-  applyMiddleware(sagaMiddleware)
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 sagaMiddleware.run(rootSaga);
 // const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

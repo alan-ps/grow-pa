@@ -1,52 +1,68 @@
 import React, { useState, useCallback } from 'react';
 import GoalItem from 'components/Goal/GoalItem';
 import update from 'immutability-helper';
+import { useDrag, useDrop } from 'react-dnd'
 
 /**
  * Represents a single group item component.
  */
 export default function GroupItem(props) {
-  const [goals, setGoals] = useState(props.goals);
 
-  const moveGoal = useCallback(
-    (dragIndex, hoverIndex) => {
-      const dragGoal = goals[dragIndex]
-      setGoals(
-        update(goals, {
-          $splice: [[dragIndex, 1], [hoverIndex, 0, dragGoal]],
-        }),
-      )
-    },
-    [goals],
-  )
+  // const [goals, setGoals] = useState(props.group.items);
+  // // const [status, setStatus] = useState('no');
+
+  // const moveGoal = useCallback(
+  //   (dragIndex, hoverIndex) => {
+  //     const dragGoal = goals[dragIndex]
+
+  //     setGoals(
+  //       update(goals, {
+  //         $splice: [[dragIndex, 1], [hoverIndex, 0, dragGoal]],
+  //       }),
+  //     )
+  //   },
+  //   [goals],
+  // )
+  // const doTest = useCallback(
+  //   (moveFrom, moveTo, index) => {
+  //     const newData = update(goals, {
+  //       [index]: {settings: {group: {$set: moveTo}}}
+  //     })
+
+  //     setGoals(newData)
+  //   },
+  //   [goals]
+  // )
+
 
   const [groupState, setGeoupState] = useState(false);
-  const groupStateSelector = groupState ? 'active' : 'hidden';
+  const groupStateSelector = groupState ? 'open' : 'closed';
 
   function handleGroupState(event) {
     setGeoupState(!groupState);
   }
 
   return (
-    <React.Fragment>
-      <div className="goal-list__group" onClick={ handleGroupState }>
-        { props.name }
+    <div className="goal-list__item">
+      <div className={`goal-list__group goal-list__group--${ groupStateSelector }` } onClick={ handleGroupState }>
+        { props.group.value + " (x)"}
       </div>
-      <div className={`goal-list__items goal-list__items--${ groupStateSelector }`} >
+      {/* <div className={`goal-list__items`} >
         {
           goals.map((goal, index) => (
-            (goal.settings.group == props.id) ? (
+
               <GoalItem
                 key={goal.id}
                 id={goal.id}
                 index={index}
                 name={goal.value}
                 moveGoal={moveGoal}
+                doTest={doTest}
+                groupId={goal.settings.group}
               />
-            ) : false
           ))
         } 
-      </div>
-    </React.Fragment>
+      </div> */}
+    </div>
   );
 }

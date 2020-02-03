@@ -5,6 +5,7 @@ const initialState = {
   value: '',
   group: '',
   goals: 0,
+  groups: 0,
   closedGroups: []
 };
 
@@ -22,7 +23,8 @@ function refreshForm(state, action) {
 }
 function actionItemFetch(state, action) {
   return updateObject(state, {
-    goals: action.goals
+    goals: action.goals,
+    groups: action.groups
   });
 }
 

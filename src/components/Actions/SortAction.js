@@ -14,10 +14,6 @@ class SortAction extends React.Component {
     this.handleSort = this.handleSort.bind(this);
   }
 
-  componentDidMount() {
-    this.sort = 'desc';
-  }
-
   handleSort(event, sortType) {
     event.preventDefault();
 
@@ -35,6 +31,7 @@ class SortAction extends React.Component {
 
     return Object.keys(sortTypes).map(
       item => <Link
+        key={item}
         to = '#'
         className = {
           `category-cp__action-item

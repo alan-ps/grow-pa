@@ -25,6 +25,7 @@ class DisplayAction extends React.Component {
 
     return Object.keys(displayTypes).map(
       item => <Link
+        key={item}
         to = '#'
         className = {
           `category-cp__action-item

@@ -20,26 +20,22 @@ class CategoryList extends React.Component {
   }
 
   render() {
-    let render = [];
-
     if (!this.props.restReducer.categories) {
       // Add a throbber loader before we wait for a response.
-      render.push(<Throbber />);
+      return ( <Throbber /> );
     }
     else {
-      render.push((
+      return (
         <Row className={ `category-list category-list-${ this.props.actionReducer.display }` }>
           {
             this.props.restReducer.categories.map(item => (
-              <Category item = { item } col= { this.props.actionReducer.display === 'bars' }/>
+              <Category key={ item.key } item = { item } col= { this.props.actionReducer.display === 'bars' }/>
             ))
           }
-          <CategoryNew />
+          <CategoryNew key='new' />
         </Row>
-      ));
+      );
     }
-
-    return render;
   }
 
 }

@@ -1,0 +1,27 @@
+.goal-list__group {
+  background-color: #39c18f;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid;
+  font-size: 20px;
+  border-radius: 5px;
+  &.yes {
+    & ~ .goal-list__items {
+      background-color: red;
+    }
+  }
+}
+
+.goal-list__group--open {
+  & ~ .goal-list__items {
+    display: block; 
+  }
+}
+.goal-list__group--closed {
+  &::before {
+    content: "> ";
+  }
+  & ~ .goal-list__items {
+    display: none;
+  }
+}

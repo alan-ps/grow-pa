@@ -15,10 +15,10 @@ function CategoryItem(props) {
   })
 
   return (
-    <React.Fragment>
+    <div className="container">
       <GoalControlPanel category={category} test={category}/>
       <GoalList categoryId={ category } />
-    </React.Fragment>
+    </div>
   )
 }
 

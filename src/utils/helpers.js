@@ -24,16 +24,15 @@ export function getCode(str, count = 2) {
  *
  * @constructor
  */
-export function PGASort(sortBy) {
+export function PGASort(sortBy, sortType) {
   return function (a, b) {
 
-    if (a['title'] == b['title']) return 0;
+    if (a[sortBy] === b[sortBy]) return 0;
 
-
-    if (sortBy === 'desc')  {
-      return a['title'] < b['title'] ? -1 : 1;
+    if (sortType === 'desc')  {
+      return a[sortBy] < b[sortBy] ? -1 : 1;
     }
-    return a['title'] < b['title'] ? 1 : -1;
+    return a[sortBy] < b[sortBy] ? 1 : -1;
   }
 }
 
@@ -48,6 +47,14 @@ export function PGAFilter(filterPhrase) {
   return function (data) {
     const type = 'title';
     return data[type].toLowerCase().startsWith(filterPhrase.toLowerCase());
-    return filterPhrase.toLowerCase() === data[type].toLowerCase();
   }
+}
+
+export function PGAGetKey(items, key='key') {
+  if (!items.length) {
+    return 1;
+  }
+
+  let sorted = Array.prototype.slice.call(items).sort(PGASort(key, 'asc'));
+  return sorted[0][key] + 1;
 }

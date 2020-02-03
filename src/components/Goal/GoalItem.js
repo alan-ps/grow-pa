@@ -5,7 +5,21 @@ import { Form } from 'react-bootstrap';
 /**
  * Represents a single goal item component.
  */
-const GoalItem = ({ id, name, index, moveGoal }) => {
+const GoalItem = (props) => {
+  const { id, name, index, moveGoal, groupId, doTest } = props;
+
+  // const doTest = useCallback(
+  //   (moveFrom, moveTo, index) => {
+  //     debugger
+  //     const newData = update(goals, {
+  //       [index]: {settings: {group: {$set: moveTo}}}
+  //     })
+
+  //     setGoals(newData)
+  //   },
+  //   [goals]
+  // )
+
 
   const ref = useRef(null)
   const [, drop] = useDrop({
@@ -14,6 +28,7 @@ const GoalItem = ({ id, name, index, moveGoal }) => {
       if (!ref.current) {
         return
       }
+
       const dragIndex = item.index
       const hoverIndex = index
       // Don't replace items with themselves
@@ -49,9 +64,13 @@ const GoalItem = ({ id, name, index, moveGoal }) => {
       // to avoid expensive index searches.
       item.index = hoverIndex
     },
+    drop(item, monitor) {
+
+      //doTest(item.prevGroup, groupId, item.index);
+    }
   })
   const [{ isDragging }, drag] = useDrag({
-    item: { type: 'goal', id, index },
+    item: { type: 'goal', id, index, prevGroup: groupId },
     collect: monitor => ({
       isDragging: monitor.isDragging(),
     }),
@@ -60,7 +79,7 @@ const GoalItem = ({ id, name, index, moveGoal }) => {
   drag(drop(ref))
   return (
     <Form.Group ref={ref} controlId="formBasicCheckbox" style={{ ...style, opacity }}>
-      <Form.Check type="checkbox" label={name} />
+      <Form.Check type="checkbox" label={name} index={props.index}/>
     </Form.Group>
   )
 }

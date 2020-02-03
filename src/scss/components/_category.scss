@@ -4,7 +4,6 @@
     flex: none;
     color: white;
     &:hover {
-      color: $color-main;
       text-decoration: none;
     }
 
@@ -15,6 +14,7 @@
   .category-list__item-show,
   .category-list__item-new {
     background-color: $color-border;
+    border: 1px solid $color-border;
     width: 150px;
     height: 150px;
     .code {
@@ -22,6 +22,10 @@
       font-weight: bold;
       text-transform: uppercase;
       padding-top: 30px;
+    }
+    &:hover {
+      background-color: #fff;
+      color: $color-main;
     }
   }
 
