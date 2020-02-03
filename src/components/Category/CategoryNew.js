@@ -1,39 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { toggleModal } from 'actions';
 
-/**
- * Represents a component to create new category.
- */
-class CategoryNew extends React.Component {
+const CategoryNew = ({name, onClick}) => (
+  <Link to='#' className="category-list__item col-md-3" onClick={e => onClick(e)}>
+    <div className="category-list__item-new">
+      <i className="code fa fa-plus-circle"></i>
+    </div>
+    <div className="category-list__item-title">{ name }</div>
+  </Link>
+);
 
-  constructor(props) {
-    super(props);
+const mapStateToProps = (state, ownProps) => ({
+  name: ownProps.name || 'Create New'
+})
 
-    this.handleClick = this.handleClick.bind(this);
+const mapDispatchToProps = (dispatch) => ({
+  onClick: (e) => {
+    e.preventDefault();
+    dispatch(toggleModal('DIRECTION_NEW'));
   }
+})
 
-  handleClick(event) {
-    event.preventDefault();
-
-    this.props.dispatch({
-      type: 'TOGGLE_MODAL',
-      showModal: true,
-      modalType: 'DIRECTION_NEW'
-    });
-  }
-
-  render() {
-    return (
-      <Link to='#' className="category-list__item col-md-3" onClick = { e => this.handleClick(e) }>
-        <div className="category-list__item-new">
-          <i className="code fa fa-plus-circle"></i>
-        </div>
-        <div className="category-list__item-title">Create new</div>
-      </Link>
-    );
-  }
-}
-
-const mapStateToProps = state => ({ ...state.actionReducer });
-export default connect(mapStateToProps)(CategoryNew);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoryNew);

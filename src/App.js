@@ -63,7 +63,7 @@ function App() {
         </div>
       </div>
 
-      <RootModal showModal={ store.getState().modalReducer.showModal } />
+      <RootModal />
 
     </Provider>
   );
