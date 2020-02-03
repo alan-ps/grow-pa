@@ -1,15 +1,13 @@
 import { updateObject, createReducer } from './api';
 
 const initialState = {
-  showModal: false,
-  modalType: ''
+  modal: false
 };
 
 // Handler for a specific case ("case reducer").
 function toggleModal(state, action) {
   return updateObject(state, {
-    showModal: action.showModal,
-    modalType: action.modalType
+    modal: action.modal || false
   })
 }
 
