@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { default as modalTypes } from './';
+import newDirectionModal from './DirectionNewModal';
 
 const MODAL_TYPES = {
-  DIRECTION_NEW: modalTypes.newDirectionModal
+  DIRECTION_NEW: newDirectionModal
 };
 
-const RootModal = ({type, closeModal}) => {
+const Modal = ({type, closeModal}) => {
   const SpecifiedModal = MODAL_TYPES[type] || null;
 
   return !SpecifiedModal ?
@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RootModal);
+)(Modal);

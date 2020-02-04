@@ -10,7 +10,7 @@ import Front from './components/Block/Front';
 import PGAHeader from './components/PGAHeader';
 import PGASignIn from './components/PGASignIn';
 import PGASignUp from './components/PGASignUp';
-import RootModal from './components/Modals/RootModal';
+import Modal from './components/Modals/Modal';
 
 // Import the route's components.
 import PGARouterAuthIn from './components/router/PGARouterAuthIn';
@@ -64,7 +64,7 @@ function App() {
         </div>
       </div>
 
-      <RootModal />
+      <Modal />
 
     </Provider>
   );
