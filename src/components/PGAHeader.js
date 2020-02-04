@@ -19,7 +19,7 @@ function PGAHeader(props) {
   return (
     <header className="header">
       <div className="container">
-        <div class="row">
+        <div className="row">
         <div className="region region-back col-2">{back}</div>
         <div className="region region-title col-8">{props.title}</div>
         <div className="region region-sign-out col-2">{button}</div>

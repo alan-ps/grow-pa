@@ -10,7 +10,7 @@ import Front from './components/Block/Front';
 import PGAHeader from './components/PGAHeader';
 import PGASignIn from './components/PGASignIn';
 import PGASignUp from './components/PGASignUp';
-import Modal from './components/Modals/Modal';
+import Modal from './components/Modal/Modal';
 
 // Import the route's components.
 import PGARouterAuthIn from './components/router/PGARouterAuthIn';

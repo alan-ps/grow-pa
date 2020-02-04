@@ -1,20 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import newDirectionModal from './DirectionNewModal';
+import TopicModal from './TopicModal';
 
 const MODAL_TYPES = {
-  DIRECTION_NEW: newDirectionModal
+  TOPIC: TopicModal
 };
 
 const Modal = ({type, closeModal}) => {
-  const SpecifiedModal = MODAL_TYPES[type] || null;
-
-  return !SpecifiedModal ?
-    null :
-    <SpecifiedModal
-      show = {type}
-      onHide = {e => closeModal(e)}
-    />;
+  const MW = MODAL_TYPES[type] || null;
+  return MW ? <MW show={Boolean(type)} onHide = {e => closeModal(e)}/> : null;
 };
 
 const mapStateToProps = (state) => ({

@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   onClick: (e) => {
     e.preventDefault();
-    dispatch(toggleModal('DIRECTION_NEW'));
+    dispatch(toggleModal('TOPIC'));
   }
 })
 
