@@ -10,7 +10,7 @@ const TopicBody = () => {
 
   const handleSubmit = (e, title) => {
     e.preventDefault();
-    dispatch(toggleModal(false))
+    dispatch(toggleModal(null))
     dispatch({type: 'CREATE_CATEGORY', payload: { title: title }});
   }
 

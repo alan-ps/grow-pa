@@ -17,9 +17,9 @@ export function removeTopic(id) {
 /**
  * Toggle a modal window.
  * 
- * @param modal string
- *   A modal type to toggle.
+ * @param showModal string | null
+ *   A modal type to show, or null to close.
  */
-export function toggleModal(modal) {
-  return { type: actionTypes.TOGGLE_MODAL, modal: modal}
+export function toggleModal(showModal) {
+  return { type: actionTypes.TOGGLE_MODAL, showModal: showModal}
 }

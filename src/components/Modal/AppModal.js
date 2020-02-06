@@ -9,7 +9,7 @@ const AppModal = () => {
   const show = !!type
 
   const dispatch = useDispatch();
-  const onHide = useCallback(() => dispatch(toggleModal(false)), [dispatch]);
+  const onHide = useCallback(() => dispatch(toggleModal(null)), [dispatch]);
 
   // Do not render a modal.
   if (!type) {
