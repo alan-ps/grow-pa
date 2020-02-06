@@ -5,7 +5,7 @@ import { toggleModal } from 'actions'
 import { ModalFactory } from './ModalFactory'
 
 const AppModal = () => {
-  const type = useSelector(state => state.modalReducer.modal)
+  const type = useSelector(state => state.showModal)
   const show = !!type
 
   const dispatch = useDispatch();
