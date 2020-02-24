@@ -1,9 +1,6 @@
 import React from 'react';
-import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Import custom application components.
 import Front from './components/Block/Front';
@@ -21,21 +18,11 @@ import Dashboard from './components/Pages/Dashboard';
 import CategoryItem from './components/Pages/CategoryItem';
 import NoMatch from './components/Pages/NoMatch';
 
-// Import application reducer.
-import rootReducer from './reducers/rootReducer';
-
-import rootSaga from './sagas';
-
 // Import the styles.
 import "./scss/styles.scss";
 
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
-);
-sagaMiddleware.run(rootSaga);
-// const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import configureStore from './configureStore'
+const store = configureStore();
 
 /**
  * An entry application component.

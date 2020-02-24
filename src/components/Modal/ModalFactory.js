@@ -31,14 +31,11 @@ const TopicBody = () => {
 }
 
 export const ModalFactory = (type) => {
-  const modal = {title: null, body: null}
-
   switch (type) {
     case 'TOPIC':
-      modal.title = TopicTitle
-      modal.body = TopicBody
-      break;
+      return {title: TopicTitle, body: TopicBody}
+    
+    default:
+      return {title: null, body: null}
   }
-
-  return modal
 }
