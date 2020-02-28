@@ -34,8 +34,8 @@ class SortAction extends React.Component {
         key={item}
         to = '#'
         className = {
-          `category-cp__action-item
-          ${ item == this.props.category_sort ? 'category-cp__action-item--active' : 'category-cp__action-item--disabled' }
+          `topic-cp__action-item
+          ${ item === this.props.category_sort ? 'topic-cp__action-item--active' : 'topic-cp__action-item--disabled' }
           fa ${ sortTypes[item] }`
         }
         onClick = { event => this.handleSort(event, item) }
