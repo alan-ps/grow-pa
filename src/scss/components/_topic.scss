@@ -3,6 +3,7 @@
     text-align: center;
     flex: none;
     color: white;
+    width: auto;
     &:hover {
       text-decoration: none;
     }
@@ -36,7 +37,7 @@
 
 .category-list-list {
   .category-list__item {
-    width: 100%;
+    width: auto;
     border: 1px solid $color-border;
     .category-list__item-show,
     .category-list__item-title {
